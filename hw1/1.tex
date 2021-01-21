@@ -1,0 +1,45 @@
+
+\section*{Problem 1}
+(21 points) A network in the College of Engineering is set up so that individual hosts (really, virtual machines) can run HTTP (web) servers that are available to the outside. 
+(Here, available means the ability to read and write data.) 
+The hosts can also run email (SMTP) servers available to other hosts on the CoE network, but these are not available to the outside. Instead, all outside mail is routed to a machine named ``smtphost'', which forwards it to the internal host, and all internal mail addressed to external hosts is routed to ``smtphost'', which forwards it to the destination. There are no other servers available to the outside on ``smtphost''.
+
+\begin{enumerate}[(a)]
+	\item Please model this using an access control matrix. Use three hosts, ``smtphost'', ``innie'' for a host on the CoE network, and ``outie'' for an outside host. Don’t forget to include the HTTP servers!
+	\item Write a command that allows ``innie'' to exchange email directly with ``outie'', bypassing ``smtphost'' entirely.
+	\item Now consider a second host called ``reallyinnie'' on the CoE network. This host has just been added to the network and has no rights initially. Write a command that gives it the ability to send email to ``outie'' if, and only if, ``innie'' can send mail directly to ``outie''.
+\end{enumerate}
+
+\begin{enumerate}[(a)]
+    \item The matrix can be shown as:
+	
+
+\begin{table*}[htbp]
+	\caption{ TODO
+	}
+	\centering
+	\begin{tabular}{lrrrr}
+	  \toprule
+	   & {smtphost} & {innie} & {outie} & {HTTP server}  \\
+  
+	  \cmidrule(lr){1-5}
+  
+	  {smtphost}                  & 4867  & 5889    & 4090     & 4755               \\
+	  {innie}                    & 340   & 389     & 574      & 608                \\
+	  {outie}                       & 4482  & 4353    & 4130     & 5628               \\
+	  {HTTP server}                  & 3191  & 3861    & 4017     & 5362               \\
+	  
+	  \bottomrule
+	\end{tabular}
+	\label{tbl:realworld}
+  \end{table*}
+	
+\end{enumerate}
+
+
+\subsubsection*{(a)}
+\subsubsection*{(b)}
+\subsubsection*{(c)}
+
+
+
