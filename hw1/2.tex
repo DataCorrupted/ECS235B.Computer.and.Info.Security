@@ -1,16 +1,35 @@
 \section*{Problem 2}
-(21 points) Suppose Alice has r and w rights over the file book. Alice wants to copy r rights to book to Bob.
+ (21 points) Suppose Alice has r and w rights over the file book. Alice wants to copy r rights to book to Bob.
 \begin{enumerate}[(a)]
     \item Assuming there is a copy right c, write a command to do this.
     \item Now assume the system supports a copy flag; for example, the right r with the copy flag would be written as rc. In this case, write a command to do the copy.
     \item In the previous part, what happens if the copy flag is not copied?
 \end{enumerate}
 
-\subsubsection*{(a)}
-\subsubsection*{(b)}
-\subsubsection*{(c)}
+\subsubsection*{Solution}
 
+\begin{enumerate}[(a)]
+    \item  The command is listed below.
 
+          \begin{minipage}{\linewidth}\begin{lstlisting}
+command copy_book(alice, bob, book)
+    if c in A[alice, book] and r in A[alice, book]
+    then
+        enter r into A[bob, book]
+end
+copy_book(alice, bob, book);
+          \end{lstlisting}\end{minipage}
+    \item The command is listed below.
 
-
+          \begin{minipage}{\linewidth}\begin{lstlisting}
+command copy_book_if_has_copyright(alice, bob, book)
+    if rc in A[alice, book] 
+    then
+        enter rc into A[bob, book]
+end
+copy_book(alice, bob, book);
+copy_book_if_has_copyright(alice, bob, book);
+          \end{lstlisting}\end{minipage}
+    \item Then bob can only read the file but he cannot distribute the file to any other entities.
+\end{enumerate}
 
