@@ -3,3 +3,22 @@
 Note that the integrity levels HIGH, MIDDLE, LOW, and NONE are ordered from highest to lowest.
 
 \subsubsection*{Solution}
+
+
+\begin{enumerate}[(a)]
+    \item Jesse, cleared for $(\texttt{SECRET}, \{ A, C \})$, wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ C \})$ and the discretionary access permissions for Jesse are set to allow him to read the document.
+
+    \item Sammi, cleared for $(\texttt{TOPSECRET}, \{ A \})$, wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ A \})$, and the discretionary access permissions for Sammi are set to disallow her to read and write the document.
+
+    \item Robin, who has no clearances (and so works at the $\texttt{UNCLASSIFIED}$ level), wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ B \})$ and the discretionary access permissions for Robin are set to allow her to read the document.
+\end{enumerate}
+
+\subsubsection*{Solution}
+
+\begin{enumerate}[(a)]
+    \item Paul can read but can't write the file. Because his level is the same as the file, so he can read. But discretionary access permission forbits him write.
+    \item Anna can read the file but not write. She can read up not not write up.
+    \item Jesse can only read the file but not write. He can read down, but his discretionary access permissions disallows him write, and he can't write down.
+    \item Sammi can't read or write the file because of her discretionary access permissions.
+    \item Robin can't read or write the file. He can't read up in this model, and he doesn't have write permission to write up.
+\end{enumerate}
