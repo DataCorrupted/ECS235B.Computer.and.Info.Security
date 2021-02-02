@@ -1,0 +1,27 @@
+
+\section*{Problem 1}
+A Bell-LaPadula security policy has the security levels $\texttt{TOP SECRET}$, $\texttt{SECRET}$, $\texttt{CONFIDENTIAL}$, and $\texttt{UNCLASSIFIED}$ (ordered from highest to lowest), and the categories $A$, $B$, and $C$.
+Specify what type of access (read, write, both, or neither) is allowed in each of the following situations.
+Justify your answers.
+
+\begin{enumerate}[(a)]
+    \item Paul, cleared for $(\texttt{SECRET}, \{ A \})$, wants to access a document classified $(\texttt{SECRET}, \{ B, C \})$, and the discretionary access permission for Paul is set to allow him to read the document.
+
+    \item Anna, cleared for $(\texttt{CONFIDENTIAL}, \{ C \})$, wants to access a document classified $(\texttt{SECRET}, \{ B, C \})$ and the discretionary access permissions for Anna are set to allow her to read and write the document.
+
+    \item Jesse, cleared for $(\texttt{SECRET}, \{ A, C \})$, wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ C \})$ and the discretionary access permissions for Jesse are set to allow him to read the document.
+
+    \item Sammi, cleared for $(\texttt{TOPSECRET}, \{ A \})$, wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ A \})$, and the discretionary access permissions for Sammi are set to disallow her to read and write the document.
+
+    \item Robin, who has no clearances (and so works at the $\texttt{UNCLASSIFIED}$ level), wants to access a document classified $(\texttt{CONFIDENTIAL}, \{ B \})$ and the discretionary access permissions for Robin are set to allow her to read the document.
+\end{enumerate}
+
+\subsubsection*{Solution}
+
+\begin{enumerate}[(a)]
+    \item Paul can't read or write the file. Because he is only cleared for filed in $A$, not $B$ and $C$.
+    \item Anna can write the file but not read. She can write up not not read up.
+    \item Jesse can only read the file but not write. He can read down, but his discretionary access permissions disallows him write, and he can't write down.
+    \item Sammi can't read or write the file because of her discretionary access permissions.
+    \item Robin can't read or write the file. He can't read up in this model, and he doesn't have write permission to write up.
+\end{enumerate}

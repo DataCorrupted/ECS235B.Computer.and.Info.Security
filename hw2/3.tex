@@ -1,0 +1,34 @@
+\section*{Problem 3}
+
+ (30 points) Prove Theorem 5.5, which says: $\Sigma(R, D, W, z_0)$ satisfies the ds-property for any secure state $z_0$ if and only if, for every action $(r, d, (b, m, f, h), (b', m', f', h'))$, $W$ satisfies the following:
+
+\begin{enumerate}[(a)]
+    \item Every $(s, o, p) \in b - b'$ satisfies the ds-property.
+    \item Every $(s, o, p) \in b'$ that does not satisfy the ds-property is not in $b$.
+\end{enumerate}
+\subsubsection*{Solution}
+
+\begin{proof}
+    Let $(x, y, z) \in \Sigma(R, D, W, z_0)$ and write $z_t = (b_t, m_t, f_t, h_t)$ for $t \in N$.
+
+    $\Leftarrow$: Prove by contradiction.
+    Suppose either (a) or (b) is not satisfied.
+    \begin{enumerate}[(a)]
+        \item Since $\forall (s, o, p) \in b_{t-1}$ satisfies the ds-property, $b_{t-1} - b_t \subset b_{t-1}$, $\forall (s, o, p) \in b_t$ must also satisfies the ds-property.
+        \item Suppose $\exists (s, o, p) \in b_{t}$ that does not satisfies the ds-property is in $b_{t-1}$.
+              Then $\forall (s, o, p) \in b_{t-1}$ must not satisfies the ds-property, contradiction.
+    \end{enumerate}
+
+    $\Rightarrow$: Prove by induction.
+    Initial case, $z_0 = (b_0, m_0, f_0, h_0)$ is secure by definition.
+
+    Induction case, suppose $z_{t-1} = (b_{t-1}, m_{t-1}, f_{t-1}, h_{t-1})$ is secure, let's discuss $z_t$.
+    We partition $b_t$ into two disjoint parts $b_t - b_{t-1}$ and $b_t \cap b_{t-1}$.
+
+    \begin{enumerate}[(a)]
+        \item $b_t - b_{t-1}$. Using property (a) we know that $\forall (s, o, p) \in b - b'$ satisfies the ds-property.
+        \item $b_t \cap b_{t-1} \subset b_{t-1}$. Using property (b) we know that $\forall (s, o, p) \in (b_t \cap b_{t-1})$ satisfies the ds-property.
+    \end{enumerate}
+
+    Therefore induction case is also secure.
+\end{proof}

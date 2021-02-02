@@ -1,0 +1,10 @@
+\section*{Problem 2}
+ (15 points) What does Trusted Solaris placing system executables at \texttt{ADMIN\_LOW} prevent? Why is this important?
+
+\subsubsection*{Solution}
+
+\texttt{ADMIN\_LOW} allows any label to dominate it.
+This means that any processes can read it, but not write.
+This prevents common shared files(executables, shared libraries, configurations, etc.) from being accidentally modified but guaranteed that anyone can read it.
+
+Source: \href{https://docs.oracle.com/cd/E19109-01/tsolaris8/816-1047/6m7g9esu9/index.html}{Trusted Solaris documentation}
