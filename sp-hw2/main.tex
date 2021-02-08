@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\title{ECS 235B Computer \& Info Security \\ Homework 2}
+\author{Yuyang(Peter) Rong \\917781535 \\ PtrRong@ucdavis.edu}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[colorlinks,linkcolor=red]{hyperref}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{subfloat}
+\usepackage{booktabs}
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\providecommand{\algorithmautorefname}{Algorithm}
+
+
+% For listings
+% In case we need rust format, check https://github.com/denki/listings-rust
+\usepackage{listings}
+\lstset{ %
+    frame=single,
+    % numbers=left,
+    backgroundcolor=\color{white},   % choose the background color
+    basicstyle=\ttfamily\footnotesize,        % size of fonts used for the code
+    breaklines=true,                 % automatic line breaking only at whitespace
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    escapeinside={(*@}{@*)},         % if you want to add LaTeX within your code
+    keywordstyle=\color{blue},       % keyword style
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=1,
+    % where to put the line-numbers; possible values are (none, left, right)
+    numbers = left,
+    % how far the line-numbers are from the code
+    numbersep = 10 pt,
+    % the style that is used for the line-numbers
+    numberstyle = \ttfamily,
+    % the step between two line-numbers. If it's 1, each line will be numbered 
+    stepnumber = 1,
+}
+\usepackage{ulem}
+\usepackage{mathtools}
+\begin{document}
+\maketitle
+
+\section*{Extra Credit}
+(30 points) Generalize the give-read rule (in section 5.2.4.2) to give-write and give-append, and prove they preserve the simple security condition, the *-property, and the discretionary security property.
+
+\subsubsection*{Solution}
+
+Represent give-write request ad $r=(s_1, \text{give}, s_2, o, \text{w})$.
+Say the current state of the system is $v = (b, m, f, h)$, then give-write rule should be $\rho_7(r, v)$:
+\begin{algorithm}[t]
+    \caption{Type inference} \label{alg:typeInference}
+    \begin{algorithmic}
+        \If{($r \notin \Delta(\rho_7)$)}
+            \State $\rho_7(\text{illegal}, v) = (\text{illegal}, v)$
+        \Else \If{($o \ne \text{root}(o) \text{ and } \text{parent}(o) \ne \text{root}(o) \text{ and } \text{parent}(o) \in b(s_1: \text{w})$) or ($\text{parent}(o) = \text{root}(o) \text{ and } \text{canallow}(s_1, o, v)$) or ($o = \text{root}(o) \text{ and } \text{canallow}(s_1, \text{root}(o), v)$)}
+                \State $\rho_7(r, v) = (\text{yes}, (b, m \wedge m[s2, o] \leftarrow \text{w}, f, h))$
+            \Else 
+                \State  $\rho_7(r, v) = (\text{no}, v)$
+            \EndIf
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{proof}
+    Suppose $v$ satisfies the simple security condition, the *-property, and the ds-property.
+    Let $\rho_7(r, v) = (d, v')$. 
+    Either $v' = v$ or $v' = (b, m \wedge m[s2, o] \leftarrow \text{w}, f, h)$.
+    
+    If $v' = v$, then $v'$ satisfies all properties.
+
+    If $v' = (b, m \wedge m[s2, o] \leftarrow \text{w}, f, h) = (b', m', f', h')$. 
+    Then we have $b = b' \rightarrow b' \subset b$
+    Therefore, using Theorem 5.15, $b' \subset b, f = f'$(Condition 1, 2), $b' \subset b, \forall s, o, m[s, o] \subset m'[s, o]$(Condition 3).
+    We can conclude that $v'$ also satisfies all properties.
+\end{proof}
+\end{document}
+\grid
