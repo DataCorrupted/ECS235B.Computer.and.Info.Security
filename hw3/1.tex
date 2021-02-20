@@ -3,3 +3,18 @@
 (25 points) Devise an algorithm that generates an access control matrix $A$ for any given history matrix $H$ of the Chinese Wall model.
 
 \subsubsection*{Solution}
+\begin{minipage}{\linewidth}\begin{lstlisting}[language=C]
+fn gen_access_control_matrix(history: Histroy) -> AccessControlMatrix {
+    let mut m = AccessControlMatrix::empty();
+    m.grant_access_to_all();
+    for (s, o) in history {
+        // Remove access for any object that are in this COI
+        for object in o.get_conflict_of_interest_class().iter() {
+            m.remove_access(s, obejct);
+        }
+        // Give this objects access back as it has been accessed.
+        m.grant_access(s, o);
+    }
+    return m;
+}
+\end{lstlisting}\end{minipage}

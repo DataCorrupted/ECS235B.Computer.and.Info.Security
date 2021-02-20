@@ -1,9 +1,36 @@
 \section*{Problem 4}
-(25 points) The system plugh has users Skyler, Matt, and David. 
-Skyler cannot access David’s files, and neither Skyler nor David can access Matt’s files. 
-The system xyzzy has users Holly, Sage, and Heidi. 
-Sage cannot access either Holly’s or Heidi’s files. 
-The composition policy says that Matt and Holly can access one another’s files, and Skyler can access Sage's files. 
-Apply the Principles of Autonomy and Security to determine who can read whose files in the composition of xyzzy and plugh.
+(25 points) The system \textit{plugh} has users $\text{Skyler}$, $\text{Matt}$, and $\text{David}$. 
+$\text{Skyler}$ cannot access $\text{David}$’s files, and neither $\text{Skyler}$ nor $\text{David}$ can access $\text{Matt}$’s files. 
+The system \textit{xyzzy} has users $\text{Holly}$, $\text{Sage}$, and $\text{Heidi}$. 
+$\text{Sage}$ cannot access either $\text{Holly}$’s or $\text{Heidi}$’s files. 
+The composition policy says that $\text{Matt}$ and $\text{Holly}$ can access one another’s files, and $\text{Skyler}$ can access $\text{Sage}$'s files. 
+Apply the Principles of Autonomy and Security to determine who can read whose files in the composition of \textit{xyzzy} and \textit{plugh}.
 
 \subsubsection*{Solution}
+
+\begin{align*}
+    & \text{AS}(\textit{plugh}) = \emptyset \\
+    & \text{AS}(\textit{xyzzy}) = \emptyset   
+\end{align*}
+
+\begin{align*}
+    \text{AS} & (\textit{plugh} \cup \textit{xyzzy})^ = \{ \\
+    & (\text{Matt}, \text{Holly}), (\text{Holly}, \text{Matt}), (\text{Skyler}, \text{Sage}) \\
+    \}  
+\end{align*}
+
+The transitive closure of the last set is:
+
+\begin{align*}
+    \text{AS} & (\textit{plugh} \cup \textit{xyzzy})^+ = \{ \\
+    & (\text{Matt}, \text{Holly}), (\text{Holly}, \text{Matt}), (\text{Skyler}, \text{Sage}) \\
+    \}  
+\end{align*}
+
+Deleting accesses that conflict with the access policies of the components yields:
+
+\begin{align*}
+    \text{AS} & (\textit{plugh} \cup \textit{xyzzy})^+ = \{ \\
+    & (\text{Matt}, \text{Holly}), (\text{Holly}, \text{Matt}), (\text{Skyler}, \text{Sage}) \\
+    \}  
+\end{align*}

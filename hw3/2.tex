@@ -1,4 +1,18 @@
 \section*{Problem 2}
-(15 points) A publisher wishes to implement a DRM scheme for its digital books. Please explain why enciphering the contents of the books, and then distributing the appropriate cryptographic keys, is insufficient to provide a digital rights management scheme.
+(15 points) A publisher wishes to implement a DRM scheme for its digital books. 
+Please explain why enciphering the contents of the books, and then distributing the appropriate cryptographic keys, is insufficient to provide a digital rights management scheme.
 
 \subsubsection*{Solution}
+
+There are three requirements mentionded in the book. 
+The first one says:
+
+\begin{quotation}
+    The system must implement controls on the use of the content. 
+    These controls constrain what clients can do with the content, so for example simply distributing the content encrypted and providing the keys to those authorized to see the content is insufficient.
+\end{quotation}
+
+While the 2nd and 3rd rule is satisfied, simply enciphering the contents of the books doesn't satisfy the first one.
+Distributing keys does not control how to clients can do with the book.
+For example, once the client purchased the book and decipherred it, he/she can copy the book and re-distribute it.
+

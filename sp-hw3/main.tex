@@ -51,10 +51,15 @@
 
 \section*{Extra Credit}
 (20 points) The Rumpole policy requires the user to resubmit a request for break-the-glass access if the policy decision point returns a new set of obligations that the subject must accept. 
-Why does the policy decision point simply check the obligations and, if they are a subset of the obligations in the request, grant the request?
+Why doesn't the policy decision point simply check the obligations and, if they are a subset of the obligations in the request, grant the request?
 
 \subsubsection*{Solution}
 
+According to \href{https://dl.acm.org/doi/10.1145/2629502}{Rumpole paper}: 
+
+\begin{quote}
+    This is needed because the contextual conditions may have changed by the time the subject has accepted the obligations.
+\end{quote}
 
 \end{document}
 \grid

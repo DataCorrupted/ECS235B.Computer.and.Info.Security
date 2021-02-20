@@ -1,7 +1,16 @@
 \section*{Problem 5}
 (25 points) Modify the two-bit system in the first example in Section 9.3 as follows. 
 Whenever a HIGH operation is performed, the HIGH state bit is output. 
-Whenever a LOW operation is performed, the LOW state bit is output. The initial state is not output (in contrast to the example). 
+Whenever a LOW operation is performed, the LOW state bit is output. 
+The initial state is not output (in contrast to the example). 
 Is this version of the two-bit system noninterference secure with respect to Lucy? Why or why not?
 
 \subsubsection*{Solution}
+
+Yes. It is noninterference.
+
+When a command and the output is only performed on its permission, the other permission can't see anything here.
+Simply put, the two-bit system gets divided into two seperated machines, therefore they can't interference with each other.
+
+In the example of Lucy and Holly. 
+Lucy only sees 0111, no matter how Holly changes her command, Lucy's output won't change.
