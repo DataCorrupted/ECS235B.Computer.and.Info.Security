@@ -1,0 +1,53 @@
+\section*{Problem 5}
+(20 points) Let $L = (S_L, \le_L)$ be a lattice. Define:
+\begin{enumerate}
+    \item $S_{IL} = \{ [a, b] | a, b \in S \wedge a <_L b \}$
+    \item $\le_{IL} = \{ ([a_1, b_1], [a_2, b_2]) | a_1 \le_L a_2 \wedge b_1 \le_L b_2 \}$
+    \item $lub_{IL}([a_1, b_1], [a_2, b_2]) = (lub_L(a_1, a_2), lub_L(b_1, b_2))$
+    \item $glb_{IL}([a_1, b_1], [a_2, b_2]) = (glb_L(a_1, a_2), glb_L(b_1, b_2))$
+\end{enumerate}
+Prove that the structure $IL = (S_{IL}, {}_{IL})$ is a lattice.
+
+\subsubsection*{Solution}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \textit{reflexive}, \textit{antisymmetric}, and \textit{transitive}
+        
+        \begin{enumerate}
+            \item \textit{reflexive}, $\forall [a, b] \in S_{IL}, [a, b] \le_{IL} [a, b]$.
+            
+            $\forall a, b \in S_L, a \le_L b$. 
+            Since $L$ is a lattice, using its \textit{reflexive} property we have $a \le_L a$ and $b \le_L b$
+            Therefore we have $[a, b] \le_{IL} [a, b]$
+
+            \item \textit{antisymmetric},  $\forall [a_1, b_1], [a_2, b_2] \in S_{IL}$, $[a_1, b_1] \le_{IL} [a_2, b_2]$ and $[a_2, b_2] \le_{IL} [a_1, b_1]$ implies $[a_1, b_1] = [a_2, b_2]$
+            
+            From $[a_1, b_1] \le_{IL} [a_2, b_2]$ we have $a_1 \le_{L} a_2$ and $b_1 \le_{L} b_2$.
+            Similarily, $a_2 \le_{L} a_1$ and $b_2 \le_{L} b_1$.
+    
+            Therefore we have  $a_2 = a_1$ and $b_2 = b_1$, thus $[a_1, b_1] = [a_2, b_2]$
+            
+            \item \textit{transitive}, $\forall [a_1, b_1], [a_2, b_2], [a_3, b_3] \in S_{IL}$, $[a_1, b_1] \le_{IL} [a_2, b_2]$ and $[a_2, b_2] \le_{IL} [a_3, b_3]$ implies $[a_1, b_1] \le_{IL} [a_3, b_3]$.
+        
+            Using  $[a_1, b_1] \le_{IL} [a_2, b_2]$ and $[a_2, b_2] \le_{IL} [a_3, b_3]$, we have $a_1 \le_L a_2$, $a_2 \le_L a_3$, and thus $a_1 \le_L a_3$. 
+            Similarily, $b_1 \le_L b_3$.
+
+            Therefore, $[a_1, b_1] \le_{IL} [a_3, b_3]$.
+        \end{enumerate}
+
+        \item $\forall [a_1, b_1], [a_2, b_2] \in S_{IL}$, there is a greatest lower bound
+        
+        $glb_{IL}([a_1, b_1], [a_2, b_2]) = (glb_L(a_1, a_2), glb_L(b_1, b_2))$
+
+        Since $L$ is a lattice, we know both $glb_L(a_1, a_2)$ and $glb_L(b_1, b_2)$ exists. Therefore $(glb_L(a_1, a_2), glb_L(b_1, b_2))$ exitsts and the greatest lower bound would be $[glb_L(a_1, a_2), glb_L(b_1, b_2)]$.
+        
+        \item $\forall [a_1, b_1], [a_2, b_2] \in S_{IL}$, there is a least upper bound
+        
+        $lub_{IL}([a_1, b_1], [a_2, b_2]) = (lub_L(a_1, a_2), lub_L(b_1, b_2))$
+
+        Since $L$ is a lattice, we know both $lub_L(a_1, a_2)$ and $lub_L(b_1, b_2)$ exists. Therefore $(lub_L(a_1, a_2), lub_L(b_1, b_2))$ exists and the lowest upper bound would be $[lub_L(a_1, a_2), lub_L(b_1, b_2)]$
+    \end{enumerate}
+
+    Therefore, we claim that the structure $IL = (S_{IL}, {}_{IL})$ is a lattice.
+\end{proof}

@@ -1,0 +1,20 @@
+\section*{Problem 3}
+
+(15 points) Prove that for $n = 2, H(X)$ is maximal when $p_1 = p_2 = 1/2$.
+
+\subsubsection*{Solution}
+
+Let's denote $p_1 = 1/2 + t$, $p_2 = 1/2 - t$, $t \in (-0.5, 0.5)$
+\begin{align*}
+    H(X) & = -p_1 \log_2 p_1 - p_2 \log_2 p_2 \\
+    & = -(1/2 + t) \log_2 (1/2 + t) - (1/2 - t) \log_2 (1/2 - t) 
+\end{align*}
+
+\begin{align*}
+    \frac{dH(X)}{dt} & = -\log_2(1/2 + t) -1 + \log_2(1/2 - t) +1 \\
+    & = -\log_2(1/2 + t) + \log_2(1/2 - t) \\
+\end{align*}
+
+It's clear that $\frac{dH(X)}{dt}$ is strictly descending with one zero point $t = 1/2$.
+Therefore, $H(X)$ ascends in $(-0.5, 0)$, descends in $(0, 0.5)$.
+$H(X)$ reaches maximum when $t = 0$, i.e. $p_1 = p_2 = 1/2$.

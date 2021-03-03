@@ -1,0 +1,24 @@
+\section*{Problem 4}
+(15 points) Consider the statement
+
+\begin{lstlisting}
+    if (x = 1) and (y = 1) then z = 1 
+\end{lstlisting}
+
+where x and y can each be 0 or 1, with both equally likely and $z$ is initially 0. 
+Compute the conditional entropies $H(x | z')$ and $H(y | z')$.
+
+\subsubsection*{Solution}
+
+\begin{align*}
+    H(x | z')  = & -p(z'=0) \sum_i p(x=i | z'=0)\log_2 p(x=i | z'=0) \\ 
+       & -p(z'=1) \sum_i p(x=i | z'=1)\log_2 p(x=i | z'=1)  \\
+     = & -3/4 * (1/2\log_2 1/2 + 1\log_2 1) - 1/4 * (0\log_2 0 + 1/2\log_2(1/2))\\
+     = & 1/2
+\end{align*}
+
+Since x and y are symmetric, we have 
+
+\begin{align*}
+    H(y | z') = H(x | z') = 1/2
+\end{align*}
