@@ -9,5 +9,13 @@ If so, prove it; if not, give a counterexample.
 It will be the same.
 
 \begin{proof}
-    
+
+    As described by Figure 9-6. 
+    The output of \textit{cat} depends on the machines HIGH input, which we know is none; and \textit{dog}'s HIGH output.
+    However, \textit{dog}'s output further depends on \textit{cat}'s HIGH output.
+    Essencially \textit{dog}'s HIGH output and \textit{cat}'s HIGH output forms a loop.
+    Without proper activation(\textit{cat}'s HIGH input), this loop is not activated.
+
+    Therefore, we can conclude that there is no HIGH input going into either machine, which leads to both giving a LOW output of 0.
+
 \end{proof}

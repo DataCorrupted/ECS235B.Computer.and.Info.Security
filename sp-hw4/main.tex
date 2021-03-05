@@ -54,5 +54,36 @@
 
 \subsubsection*{Solution}
 
+Note: This proof borrowed ideas from the work that proposed restrictiveness: \textit{Noninterference and the Composability of Security Properties}[1]
+
+\begin{proof}
+    Suppose we have two two-bit machines $A$ and $B$, $A$ and $B$ are composed together.
+    \begin{enumerate}
+        \item Given input, $A$ and $B$ must be in a different state, causing the composed machine to be in a different state.
+        
+        \item Since given HIGH/LOG input sequence, $A$ and $B$ has such equivalance states, the composed machine does too.
+        
+        \item Suppose composed machine has equivalance states $\sigma_i \equiv\sigma_j$. 
+        That means states in $A$ and $B$ are equivalt too, i.e. $\sigma^A_i \equiv \sigma^A_j$, $\sigma^B_i \equiv \sigma^B_j$.
+        Therefore, exists a sequence of HIGH inputs that cause $\sigma^A_i$ and $\sigma^A_j$. 
+        Similarly there is a sequence of HIGH inputs for $B$, part of which are outputs of $A$.
+        Therefore, we can compose these inputs as necessary to generate two sequences of inputs for the composed machine.
+        
+        \item Suppose composed machine has equivalance states $\sigma_i \equiv\sigma_j$. 
+        We have LOW input $e_A$, $e_B$ for machine $A$ and $B$.
+        That means states in $A$ and $B$ are equivalt too, i.e. $\sigma^A_i \equiv \sigma^A_j$, $\sigma^B_i \equiv \sigma^B_j$.
+        Thus we have sequence of $c_Ae_Ad_A$ and $c_Be_Bd_B$ that transfers $A$ from $\sigma^A_i$ to $\sigma'^A_i$, $B$ from $\sigma^B_i$ to $\sigma'^B_i$.
+        We can also find sequences of $c'_Ae_Ad'_A$ and $c'_Be_Bd'_B$ since $A$ and $B$ are restrictive.
+        
+        Part of $c_Be_Bd_B$ belongs to the output of $A$, therefore, we can compose $c_Ae_Ad_A$ and $c_Be_Bd_B$ to a new sequence $ce_Ad$.
+        We can compose $c'_Ae_Ad'_A$ and $c'_Be_Bd'_B$ to a new sequence $c'ed'$.
+        
+        Thus property 4 is satisfied.
+    \end{enumerate}
+\end{proof}
+
+
+[1] D. McCullough. “Noninterference and the Composability of Security Properties,” Proceedings of the 1988 IEEE Symposium on Security and Privacy pp. 177–186 (Apr. 1988)
+
 \end{document}
 \grid
