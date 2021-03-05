@@ -6,9 +6,9 @@ How might you add sufficient noise to it to render it unusable?
 
 \subsubsection*{Solution}
 
-The power is $z$, so the loop is executed at most $\log_2 z$ times. 
-Since the execution time and $\log_2 z$ is approximately linear.
-The attacker can measure the execution time of this loop to get a general idea of what $z$ is.
+The power used is (almost) linear to $k$, i.e. the time multiplication is executed.
+The attacker can measure the power used of this loop to get a general idea of what $k$ is.
 
-To render this attack useless, we fix the loop time.
+To render this attack useless, we fix the loop.
 Given an upper bound of $z$, say $z < 2^K$, we always repeat the loop for $K$ times.
+Therefore, the power used will be the same no matter $z$.
