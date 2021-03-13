@@ -1,0 +1,33 @@
+
+\section*{Problem 1}
+
+(30 points) Consider the rule of transitive confinement. 
+Suppose a process needs to execute a subprocess in such a way that the child can access exactly two files, one only for reading and one only for writing.
+
+\begin{enumerate}
+    \item Could capability lists be used to implement this? If so, how?
+    \item Could access control lists implement this? If so, how?
+\end{enumerate}
+
+\subsubsection*{Solution}
+
+\begin{enumerate}
+    \item Capability lists can't be used. 
+    
+    Because to prevent a covert chanel, the parent has to forbit ALL other processes from reading the file, which is impossible.
+
+    \item Access control lists can be used too.
+    
+    The parent process should add child's pid into the files access control lists first.
+    It has to be parent process since child process don't have the privilage.
+    And after the child dies the parent needs to maintain the access control list properly, i.e. delete that pid from the lists.
+
+    It would be something like:
+
+    \begin{align*}
+         acl(file\_to\_read) & = \{ (subprocess, \{r\}) \} \\
+         acl(file\_to\_write) & = \{ (subprocess, \{w\}) \} \\
+         acl(subprocess) & = \{ (process, \{own\}), (subprocess, \{r, w, x, own\}) \} \\
+         acl(process) & = \{ (process, \{r, w, x, own\}) \} \\
+    \end{align*}
+\end{enumerate}

@@ -1,0 +1,26 @@
+\section*{Problem 2}
+
+(30 points) In the Janus system, when the framework disallows a system call, the error code EINTR (interrupted system call) is returned.
+
+\begin{enumerate}
+    \item When some programs have read or write system calls terminated with this error, they retry the calls. 
+    What problems might this create?
+    \item Why did the developers of Janus not devise a new error code (say, EJAN) to indicate an unauthorized system call?    
+\end{enumerate}
+
+\subsubsection*{Solution}
+
+Part of this answer is inspired by the original work: \href{https://www2.eecs.berkeley.edu/Pubs/TechRpts/1999/CSD-99-1056.pdf}{Janus: an approach for connement of untrusted applications}.
+
+\begin{enumerate}
+    \item It may create an infinite loop.
+    
+    Some programs may have the logic that if a system call fails, keep calling until it's successful.
+    Suppose the program is not privilaged to do that system call, this is an infinite loop that never ends.
+
+    To fix this, the system may heuristically add an upper bound, i.e. when a system call is used and failed in a continous X times, the OS may kill the process.
+
+    \item Solaris does not support that behavior.
+    
+    This feature need the syscall handler to check the privilage of the caller, which adds complexity to system design.
+\end{enumerate}

@@ -1,0 +1,19 @@
+\section*{Problem 3}
+
+(40 points) Kernighan and Plauger argue a minimalist philosophy of tool building. 
+Their thesis is that each program should perform exactly one task, and more complex programs should be formed by combining simpler programs. 
+Discuss how this philosophy fits in with the principle of economy of mechanism. 
+In particular, how does the advantage of the simplicity of each component of a software system offset the disadvantage of a multiplicity of interfaces among the various components?
+
+\subsubsection*{Solution}
+
+Simplicity of each component decreases the \textit{surface of attack}.
+
+When there is a bug in the system, there can be only two locations: the component it self, or the way the system is composed.
+The maintainer can simply take the system apart and test each component to determine if it is a component's fault or the system composition.
+
+Furthermore, components designed with only ONE interface is easy to write, test, and maintain. 
+Therefore, it is not likely to have a bug in the component. 
+
+On the otherhand, components with multiple interfaces may have bugs dependent on the input.
+Thus it is harder to isolate the problem.
